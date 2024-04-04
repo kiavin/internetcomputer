@@ -1,0 +1,27 @@
+{
+  "canisters": {
+    "solanke_backend": {
+      "candid": "src/solanke_backend/solanke_backend.did",
+      "package": "solanke_backend",
+      "type": "rust"
+    },
+    "solanke_frontend": {
+      "dependencies": [
+        "solanke_backend"
+      ],
+      "source": [
+        "src/solanke_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "solanke_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

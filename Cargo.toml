@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/solanke_backend"
+]
+resolver = "2"

@@ -1,0 +1,28 @@
+type Choice = variant { Approve; Pass; Reject };
+type CreateProduct = record { description : text; is_active : bool };
+type Product = record {
+  id : nat64;
+  reject : nat32;
+  owner : principal;
+  voted : vec principal;
+  pass : nat32;
+  approve : nat32;
+  description : text;
+  is_active : bool;
+};
+type Result = variant { Ok; Err : ShowError };
+type ShowError = variant {
+  UpdateError : text;
+  AccessRejected;
+  ProductIsNotActive;
+  AlreadyAdded;
+  NoSuchProduct;
+};
+service : {
+  create_product : (CreateProduct) -> (opt Product);
+  edit_product : (nat64, CreateProduct) -> (Result);
+  end_product : (nat64) -> (Result);
+  get_product : (nat64) -> (opt Product) query;
+  get_product_count : () -> (nat64) query;
+  vote : (nat64, Choice) -> (Result);
+}
